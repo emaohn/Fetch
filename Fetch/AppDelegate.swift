@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FirebaseApp.configure()
+        let storyboard = UIStoryboard(name: "Login", bundle: .main)
+        
+        if let initialViewController = storyboard.instantiateInitialViewController() {
+            
+            window?.rootViewController = initialViewController
+            
+            window?.makeKeyAndVisible()
+        }
+        
+        configureInitialRootViewController(for: window)
+        
+        UITextField.appearance().keyboardAppearance = .dark
+        
+        UINavigationBar.appearance().tintColor = UIColor.tcOffWhite
+        
+        UINavigationBar.appearance().barTintColor = UIColor.tcDarkBlue
+        
+        UINavigationBar.appearance().isTranslucent = false
+        
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.tcOffWhite]
+        
+        UINavigationBar.appearance().prefersLargeTitles = true
+        
+        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.tcOffWhite]
         return true
     }
 
@@ -42,5 +68,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+}
+
+extension AppDelegate {
+    func configureInitialRootViewController(for window: UIWindow?) {
+        let defaults = Foundation.UserDefaults.standard
+        //let initialViewController: UIViewController
+        
+        if let _ = Auth.auth().currentUser,
+            let userData = defaults.object(forKey: Constants.UserDefaults.currentUser) as? Data,
+            let user = try? JSONDecoder().decode(User.self, from: userData) {
+            User.setCurrent(user)
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: .main)
+            
+            if let initialViewController = storyboard.instantiateInitialViewController() {
+                window?.rootViewController = initialViewController
+                window?.makeKeyAndVisible()
+            }
+        } else {
+            let storyboard = UIStoryboard(name: "Login", bundle: .main)
+            
+            if let initialViewController = storyboard.instantiateInitialViewController() {
+                window?.rootViewController = initialViewController
+                window?.makeKeyAndVisible()
+            }
+        }
+    }
 }
 

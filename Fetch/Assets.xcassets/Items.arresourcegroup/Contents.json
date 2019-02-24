@@ -5,7 +5,13 @@
   },
   "resources" : [
     {
-      "filename" : "Pringles.arobject"
+      "filename" : "fig bars.arobject"
+    },
+    {
+      "filename" : "peanut butter bars.arobject"
+    },
+    {
+      "filename" : "pringles.arobject"
     }
   ]
 }
