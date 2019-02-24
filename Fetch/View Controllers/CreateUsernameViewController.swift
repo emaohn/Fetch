@@ -17,7 +17,22 @@ class CreateUsernameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        usernameTextField.layer.shadowOffset = CGSize(width: 0, height: 1)
+        usernameTextField.layer.shadowOpacity = 1
+        usernameTextField.layer.shadowOffset = CGSize.zero
+        usernameTextField.layer.shadowColor = UIColor.black.cgColor
+        usernameTextField.layer.shadowRadius = 15
+        usernameTextField.layer.cornerRadius = 10
+        usernameTextField.layer.masksToBounds = true
+        
+        nextButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+        nextButton.layer.shadowOpacity = 1
+        nextButton.layer.shadowOffset = CGSize.zero
+        nextButton.layer.shadowColor = UIColor.black.cgColor
+        nextButton.layer.shadowRadius = 15
+        nextButton.layer.cornerRadius = 10
+        nextButton.layer.masksToBounds = true
         // Do any additional setup after loading the view.
     }
     

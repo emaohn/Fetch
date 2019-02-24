@@ -39,6 +39,16 @@ class ScanViewController: UIViewController, ARSCNViewDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(addItem), name: NSNotification.Name("addItem"), object: nil)
     }
     
+    func setup() {
+        containerView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        containerView.layer.shadowOpacity = 1
+        containerView.layer.shadowOffset = CGSize.zero
+        containerView.layer.shadowColor = UIColor.black.cgColor
+        containerView.layer.shadowRadius = 15
+        containerView.layer.cornerRadius = 10
+        containerView.layer.masksToBounds = true
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         containerBottomConstraint.constant = -100

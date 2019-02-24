@@ -22,6 +22,22 @@ class DisplayStoreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
+        
+        startScanButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+        startScanButton.layer.shadowOpacity = 1
+        startScanButton.layer.shadowOffset = CGSize.zero
+        startScanButton.layer.shadowColor = UIColor.black.cgColor
+        startScanButton.layer.shadowRadius = 15
+        startScanButton.layer.cornerRadius = 10
+        startScanButton.layer.masksToBounds = true
+        
+        purchaseButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+        purchaseButton.layer.shadowOpacity = 1
+        purchaseButton.layer.shadowOffset = CGSize.zero
+        purchaseButton.layer.shadowColor = UIColor.black.cgColor
+        purchaseButton.layer.shadowRadius = 15
+        purchaseButton.layer.cornerRadius = 10
+        purchaseButton.layer.masksToBounds = true
         // Do any additional setup after loading the view.
     }
     
@@ -50,7 +66,12 @@ class DisplayStoreViewController: UIViewController {
     }
     
     @IBAction func purchaseButtonPressed(_ sender: Any) {
-        ref?.child("K-Mart/requests/customer").setValue(cart)
+        var stuff = [String]()
+        for item in cart {
+            stuff.append(item.title)
+        }
+        
+        ref?.child("store/K-Mart/requests/customer").setValue(stuff)
     }
     
     @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {

@@ -66,7 +66,7 @@ class StoresViewController: UIViewController {
 extension StoresViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if dataRetrieved{
-            return 1
+            return stores.count
         } else {
             return 0
         }
