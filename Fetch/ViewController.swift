@@ -24,7 +24,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.showsStatistics = true
         
         // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        let scene = SCNScene(named: "art.scnassets/scene.scn")!
         
         // Set the scene to the view
         sceneView.scene = scene
@@ -35,7 +35,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
-
+        
+        configuration.detectionObjects = ARReferenceObject.referenceObjects(inGroupNamed: "Items", bundle: Bundle.main)!
+        
         // Run the view's session
         sceneView.session.run(configuration)
     }
@@ -48,6 +50,27 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
 
     // MARK: - ARSCNViewDelegate
+    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
+        let node = SCNNode()
+        
+        if let objectAnchor = anchor as? ARObjectAnchor {
+            print("object detected")
+            let plane = SCNPlane(width: CGFloat(objectAnchor.referenceObject.extent.x * 0.8), height: CGFloat(objectAnchor.referenceObject.extent.y * 0.3))
+            plane.cornerRadius = plane.width / 8
+            let spriteKitScene = SKScene(fileNamed: "label.sks")
+            plane.firstMaterial?.diffuse.contents = spriteKitScene
+            plane.firstMaterial?.isDoubleSided = true
+            plane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
+            let planeNode = SCNNode(geometry: plane)
+            planeNode.position = SCNVector3Make(objectAnchor.referenceObject.center.x, objectAnchor.referenceObject.center.y + 0.1, objectAnchor.referenceObject.center.z)
+            node.addChildNode(planeNode)
+        }
+        
+        
+        
+        
+        return node
+    }
     
 /*
     // Override to create and configure nodes for anchors added to the view's session.

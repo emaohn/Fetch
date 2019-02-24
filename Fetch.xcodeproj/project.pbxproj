@@ -13,6 +13,7 @@
 		E841804F2222D9890030F6FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E841804D2222D9890030F6FF /* Main.storyboard */; };
 		E84180512222D98D0030F6FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E84180502222D98D0030F6FF /* Assets.xcassets */; };
 		E84180542222D98D0030F6FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E84180522222D98D0030F6FF /* LaunchScreen.storyboard */; };
+		E841805E2222E8800030F6FF /* label.sks in Resources */ = {isa = PBXBuildFile; fileRef = E841805D2222E8800030F6FF /* label.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		E84180502222D98D0030F6FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E84180532222D98D0030F6FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E84180552222D98D0030F6FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E841805D2222E8800030F6FF /* label.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = label.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		E84180462222D9890030F6FF /* Fetch */ = {
 			isa = PBXGroup;
 			children = (
+				E841805D2222E8800030F6FF /* label.sks */,
 				E84180472222D9890030F6FF /* AppDelegate.swift */,
 				E84180492222D9890030F6FF /* art.scnassets */,
 				E841804B2222D9890030F6FF /* ViewController.swift */,
@@ -127,6 +130,7 @@
 			files = (
 				E841804A2222D9890030F6FF /* art.scnassets in Resources */,
 				E84180542222D98D0030F6FF /* LaunchScreen.storyboard in Resources */,
+				E841805E2222E8800030F6FF /* label.sks in Resources */,
 				E84180512222D98D0030F6FF /* Assets.xcassets in Resources */,
 				E841804F2222D9890030F6FF /* Main.storyboard in Resources */,
 			);
