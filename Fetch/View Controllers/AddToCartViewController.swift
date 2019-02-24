@@ -16,6 +16,21 @@ class AddToCartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        cancelButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+        cancelButton.layer.shadowOpacity = 1
+        cancelButton.layer.shadowOffset = CGSize.zero
+        cancelButton.layer.shadowColor = UIColor.black.cgColor
+        cancelButton.layer.shadowRadius = 15
+        cancelButton.layer.cornerRadius = 10
+        cancelButton.layer.masksToBounds = true
+        
+        addButton.layer.shadowOffset = CGSize(width: 0, height: 1)
+        addButton.layer.shadowOpacity = 1
+        addButton.layer.shadowOffset = CGSize.zero
+        addButton.layer.shadowColor = UIColor.black.cgColor
+        addButton.layer.shadowRadius = 15
+        addButton.layer.cornerRadius = 10
+        addButton.layer.masksToBounds = true
         // Do any additional setup after loading the view.
     }
     

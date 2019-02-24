@@ -120,7 +120,7 @@ class ScanViewController: UIViewController, ARSCNViewDelegate {
                 }
                 
                 if let priceLabel = spriteKitScene?.childNode(withName: "price") as? SKLabelNode{
-                    priceLabel.text = "\(obj)"
+                    priceLabel.text = "$\(obj)"
                 }
             }
             toggleAddCart()
