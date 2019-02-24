@@ -36,7 +36,7 @@ class ScanViewController: UIViewController, ARSCNViewDelegate {
         sceneView.scene = scene
         
         NotificationCenter.default.addObserver(self, selector: #selector(toggleAddCart), name: NSNotification.Name("ToggleAddCart"), object: nil)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(addItem), name: NSNotification.Name("addItem"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -119,6 +119,10 @@ class ScanViewController: UIViewController, ARSCNViewDelegate {
         return node
     }
     
+    @objc func addItem() {
+        guard let item = currentItem else {return}
+        self.cart?.append(item)
+    }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user

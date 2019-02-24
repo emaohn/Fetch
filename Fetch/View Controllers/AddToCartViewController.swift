@@ -20,6 +20,7 @@ class AddToCartViewController: UIViewController {
     }
     
     @IBAction func AddButtonPressed(_ sender: Any) {
+        NotificationCenter.default.post(name: NSNotification.Name("addItem"), object: nil)
         NotificationCenter.default.post(name: NSNotification.Name("ToggleAddCart"), object: nil)
     }
     @IBAction func cancelButtonPressed(_ sender: Any) {

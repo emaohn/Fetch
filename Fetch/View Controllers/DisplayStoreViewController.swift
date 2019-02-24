@@ -12,6 +12,7 @@ class DisplayStoreViewController: UIViewController {
     var data: DataSnapshot?
     var cart = [Item]()
     var dataLoaded = false
+    var ref: DatabaseReference?
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var startScanButton: UIButton!
@@ -20,7 +21,7 @@ class DisplayStoreViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        ref = Database.database().reference()
         // Do any additional setup after loading the view.
     }
     
@@ -49,11 +50,11 @@ class DisplayStoreViewController: UIViewController {
     }
     
     @IBAction func purchaseButtonPressed(_ sender: Any) {
-        
+        ref?.child("K-Mart/requests/customer").setValue(cart)
     }
     
     @IBAction func unwindWithSegue(_ segue: UIStoryboardSegue) {
-       
+       tableView.reloadData()
     }
 }
 
